@@ -1,0 +1,119 @@
+<?php 
+
+/**
+* Implements hook_menu().
+*/
+function tedaMas_menu() {
+    /*Administrador*/
+    $items['admin/te-damos-mas/config'] = array(
+        'title' => 'Te damos Más',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('tedaMas_admin'),
+        'access arguments' => array('administer_tedaMas'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['admin/te-damos-mas/reportes'] = array(
+        'title' => 'Reportes',
+        'page callback' => 'tedaMasReportes',
+        'access arguments' => array('access content'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['te-damos-mas'] = array(
+        'title' => 'Te damos más',
+        'page callback' => 'tedaMas',
+        'access arguments' => array('access content'),
+    );
+
+    $items['te-damos-mas/terminos-condiciones'] = array(
+        'title' => 'Te damos más',
+        'page callback' => 'tedaMasTerminos',
+        'access arguments' => array('access content'),
+    );
+
+
+    $items['te-damos-mas/verify/%/%'] = array(
+        'title' => 'El Heraldo te da más',
+        'page callback' => 'tedaMasVerify',
+        'page arguments' =>  array(2,3),
+        'access arguments' => array('access content'),
+    );
+
+    return $items;
+}
+
+
+
+
+function tedaMas(){
+    return theme('tedaMas');
+}
+
+function tedaMasReportes(){
+    return theme('tedaMasReportes');
+}
+
+function tedaMasVerify($recurso,$id){
+     
+    print theme('tedaMasVerify',array("recurso"=>$recurso,"cedula"=>$id));
+    return NULL;
+}
+
+function tedaMasTerminos(){
+    return theme('tedaMasTerminos');
+}
+
+function tedaMas_theme(){
+    return array(
+        'tedaMasReportes' => array(
+            'template' => 'templates/tedaMasReportes', 
+        ),
+        'tedaMas' => array(
+            'template' => 'templates/tedaMas', 
+        ),
+        'tedaMasTerminos' => array(
+            'template' => 'templates/tedaMas_terminos', 
+        ),
+        'tedaMasVerify' => array(
+            'template' => 'templates/tedaMasVerify',
+            'variables' => array(
+                'cedula' => NULL,
+                'recurso' => NULL,
+            ),
+        ),
+    );
+}
+
+
+function tedaMas_permission() {
+  return array(
+    'administer_tedaMas' => array(
+      'title' => t('Administrador'),
+      'description' => t('Permite asignar configuraciónes a la campara El Heraldo te da más '),
+    ),
+  );
+}
+
+function tedaMas_admin() {
+    $form = array();
+    $form['tedaMas_title'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Titulo'),
+        '#default_value' => variable_get('tedaMas_title', ""),
+        '#required' => true,
+        '#size' => 120,
+    );
+
+    $form['tedaMas_sumario'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Sumario'),
+        '#default_value' => variable_get('tedaMas_sumario', ""),
+        '#required' => true,
+        '#size' => 120,
+    );
+
+    return system_settings_form($form);
+}
+
+module_load_include('inc', 'tedaMas', 'plugins/core');

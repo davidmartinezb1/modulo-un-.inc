@@ -1,0 +1,17 @@
+name = Te Damos Más
+description = Módulo para la campaña El Heraldo te damos más
+package = Servicios
+core = 7.x
+
+version = "7.x-1.x"
+core = "7.x"
+project = "EH"
+datestamp = "1518636028"
+
+configure = admin/te-da-mas/config
+
+
+; ========================================
+; Css
+; ========================================
+

@@ -1,0 +1,99 @@
+    main#tedaMas {
+        width: 500px;
+        margin: 0px auto;
+        padding-top: 100px;
+    }
+    
+    main section#info {
+        margin-bottom: 20px;
+    }
+    
+    .input-group {
+        padding-bottom: 10px;
+    }
+    
+    main section#info h2.title {
+        margin: 0px auto;
+        width: 50%;
+        padding-bottom: 10px;
+    }
+    
+    a.add_button,
+    a.remove_button {
+        display: flex;
+    }
+    
+    a.add_button {
+        visibility: hidden;
+    }
+    
+    a.add_button.active {
+        visibility: visible!important;
+    }
+    
+    a .btn-frm {
+        margin-left: 5px;
+        margin-top: 4px;
+    }
+    
+    a.remove_button {
+        margin-top: 10px;
+        margin-left: 10px;
+        vertical-align: text-bottom;
+    }
+    
+    a.remove_button .btn-frm {
+        margin-top: -4px;
+    }
+    
+    .input-group.form-group.btn {
+        margin: 0px auto;
+    }
+    
+    .input-group.form-group.btn.send {
+        display: none;
+    }
+    
+    .input-group.form-group.btn.send.active {
+        display: inline-table;
+    }
+    
+    #step-1 {
+        display: none;
+    }
+    
+    #step-2 {
+        display: none;
+    }
+    
+    #step-3 {
+        display: none;
+    }
+    
+    #step-4 {
+        display: none;
+    }
+    
+    #step-1.active {
+        display: block;
+    }
+    
+    #step-2.active {
+        display: block;
+    }
+    
+    #step-3.active {
+        display: block;
+    }
+    
+    #step-4.active {
+        display: block;
+    }
+    
+    #volver-concurso {
+        border-radius: 8px;
+        color: #b10012;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+    }
